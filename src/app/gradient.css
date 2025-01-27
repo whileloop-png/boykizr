@@ -1,17 +1,21 @@
 :root {
-  --purple: rgb(123, 31, 162);
-  --violet: rgb(103, 58, 183);
-  --pink: rgb(244, 143, 177);
+  --black: rgb(105, 105, 105);              /* Black */
+  --dark-grey: rgb(138, 138, 138);      /* Dark Grey */
+  --light-grey: rgb(173, 173, 173);      /* Light Grey */
+  --white: rgb(235, 235, 235);           /* White */
 }
 
 .magic-text {
-  animation: background-pan 3s linear infinite;
+  animation: background-pan 3s ease-in-out infinite;
   background: linear-gradient(
       to right,
-      var(--purple),
-      var(--violet),
-      var(--pink),
-      var(--purple)
+      var(--white),
+      var(--light-grey),
+      var(--dark-grey),
+      var(--black),
+      var(--dark-grey),
+      var(--light-grey),
+      var(--white)
   );
   background-size: 200%;
   -webkit-background-clip: text;
@@ -22,8 +26,58 @@
   from {
       background-position: 0% center;
   }
-
   to {
       background-position: -200% center;
   }
+}
+
+.faq-item {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.faq-toggle {
+  display: none;
+}
+
+.faq-question {
+  display: block;
+  padding: 10px; /* Keep padding if you want some space */
+  border: 2px dashed #646464;
+  border-radius: 10px 10px 0 0; /* Rounded top corners */
+  background: #0a0a0a;
+  transition: background 1s, transform 1s; /* Added transition for transform */
+  max-width: 400px; /* Set a max width to control length */
+  margin: 0 auto; /* Center the box if max-width is used */
+}
+
+.faq-question:hover {
+  background: #1d1d1d80;
+  transform: translateY(-3px);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Shortened transition */
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle background */
+  border-radius: 0 0 10px 10px; /* Rounded bottom corners */
+  padding: 10px; /* Consistent padding for a sleek look */
+  opacity: 0; /* Start hidden */
+  max-width: 400px; /* Set a max width to control length */
+  margin: 0 auto; /* Center the box if max-width is used */
+}
+
+.faq-toggle:checked + .faq-question {
+  border-bottom: none; /* Remove bottom border when open */
+}
+
+.faq-toggle:checked + .faq-question + .faq-answer {
+  max-height: 200px; /* Adjust this value based on expected content size */
+  opacity: 1; /* Fully visible when open */
+}
+
+.glow {
+  color: rgb(255, 255, 255);
+  text-shadow: 0 0 5px rgba(216, 216, 216, 0.8), 0 0 10px rgba(216, 216, 216, 0.6), 0 0 15px rgba(216, 216, 216, 0.4);
 }
